@@ -1,0 +1,19 @@
+1m26-02 - test.trap.show / {
+    handle / api/* {
+        reverse_proxy backend:3000
+    }
+    handle /.well-known/* {
+        reverse_proxy backend:3000
+    }
+    handle /widget {
+        uri strip_prefix /widget
+        reverse_proxy widget:80
+    }
+    handle /widget/* {
+        uri strip_prefix /widget
+        reverse_proxy widget:80
+    }
+    handle {
+        reverse_proxy frontend:80
+    }
+}
