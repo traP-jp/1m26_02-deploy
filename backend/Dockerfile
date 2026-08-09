@@ -1,1 +1,0 @@
-FROM ghcr.io/traP-jp/1m26_02-server:latest

@@ -1,0 +1,69 @@
+version: '3'
+
+services:
+  reverse-proxy:
+    image: caddy:2.7.6-alpine
+    container_name: traq-reverse-proxy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - backend
+      - frontend
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+  backend:
+    image: ghcr.io/traptitech/traq:latest
+    container_name: traq-backend
+    restart: always
+    expose:
+      - "3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./config.yml:/app/config.yml
+      - app-storage:/app/storage
+      - ./keys:/keys 
+
+  frontend:
+    image: ghcr.io/traptitech/traq-ui:latest
+    container_name: traq-frontend
+    restart: always
+    expose:
+      - "80"
+    environment:
+      THEME_COLOR: '#0D67EA' # this is the default value
+    volumes:
+      - ./override/:/app/override
+
+  db:
+    image: mariadb:10.11.7
+    container_name: traq-db
+    restart: always
+    environment:
+      MYSQL_USER: traq
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: traq
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    expose:
+      - "3306"
+    volumes:
+      - db:/var/lib/mysql
+    healthcheck:
+      test: mysql --user=$$MYSQL_USER --password=$$MYSQL_PASSWORD --execute "SHOW DATABASES;"
+      interval: 1s
+      timeout: 10s
+      retries: 60
+
+volumes:
+  caddy-data:
+  caddy-config:
+  app-storage:
+  db:
+  es:

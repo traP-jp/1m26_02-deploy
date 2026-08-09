@@ -7,8 +7,7 @@
             messagingSenderId: 'messagingSenderId'
         },
         enableSearch: false,
-        isRootChannelSelectableAsParentChannel: true,
-        showWidgetCopyButton: false
+        isRootChannelSelectableAsParentChannel: true
     }
 
     self.traQConfig = config

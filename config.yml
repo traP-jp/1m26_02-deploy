@@ -1,0 +1,20 @@
+origin: https://example.com
+port: 3000
+allowSignUp: true
+
+mariadb:
+  host: db
+  port: 3306
+  username: traq
+  password: password
+  database: traq
+
+storage:
+  type: local
+  local:
+    dir: /app/storage
+
+# FCM設定(通知機能を有効にする)
+firebase:
+  serviceAccount:
+    file: /keys/firebase-service-account.json
