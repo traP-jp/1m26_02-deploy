@@ -1,5 +1,5 @@
-1m26-02 - test.trap.show / {
-    handle / api/* {
+1m26-02-test.trap.show {
+    handle /api/* {
         reverse_proxy backend:3000
     }
     handle /.well-known/* {
