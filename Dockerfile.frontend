@@ -1,0 +1,3 @@
+FROM ghcr.io/traptitech/traq-ui:latest
+
+COPY override/ /app/override/
