@@ -1,0 +1,21 @@
+FROM ghcr.io/traptitech/traq:latest AS traq
+
+FROM alpine:3.22
+
+RUN addgroup -S traq && adduser -S -G traq traq
+
+WORKDIR /app
+
+COPY --from=traq /app/traQ /app/traQ
+COPY --from=traq /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+COPY config.neoshowcase.yml /app/config.yml
+
+RUN mkdir -p /app/storage && chown -R traq:traq /app
+
+USER traq
+
+EXPOSE 3000
+
+# NeoShowcase provisions MariaDB credentials as NS_MARIADB_* variables.
+# traQ reads the corresponding TRAQ_MARIADB_* variables.
+ENTRYPOINT ["/bin/sh", "-c", "export TRAQ_MARIADB_HOST=\"${NS_MARIADB_HOSTNAME}\" TRAQ_MARIADB_PORT=\"${NS_MARIADB_PORT}\" TRAQ_MARIADB_USERNAME=\"${NS_MARIADB_USER}\" TRAQ_MARIADB_PASSWORD=\"${NS_MARIADB_PASSWORD}\" TRAQ_MARIADB_DATABASE=\"${NS_MARIADB_DATABASE}\"; exec /app/traQ serve"]

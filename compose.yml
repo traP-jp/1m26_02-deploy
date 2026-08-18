@@ -28,7 +28,6 @@ services:
     volumes:
       - ./config.yml:/app/config.yml
       - app-storage:/app/storage
-      - ./keys:/keys 
 
   frontend:
     image: ghcr.io/traptitech/traq-ui:latest
@@ -66,4 +65,3 @@ volumes:
   caddy-config:
   app-storage:
   db:
-  es:

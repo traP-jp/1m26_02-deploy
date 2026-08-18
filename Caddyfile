@@ -5,14 +5,6 @@
     handle /.well-known/* {
         reverse_proxy backend:3000
     }
-    handle /widget {
-        uri strip_prefix /widget
-        reverse_proxy widget:80
-    }
-    handle /widget/* {
-        uri strip_prefix /widget
-        reverse_proxy widget:80
-    }
     handle {
         reverse_proxy frontend:80
     }

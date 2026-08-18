@@ -1,0 +1,11 @@
+origin: https://1m26-02-test.trap.show
+port: 3000
+allowSignUp: true
+
+# MariaDB settings are supplied by Dockerfile.backend from NeoShowcase's
+# NS_MARIADB_* system environment variables.
+
+storage:
+  type: local
+  local:
+    dir: /app/storage

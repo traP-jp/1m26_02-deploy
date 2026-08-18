@@ -1,4 +1,4 @@
-origin: https://example.com
+origin: https://1m26-02-test.trap.show
 port: 3000
 allowSignUp: true
 
@@ -14,7 +14,7 @@ storage:
   local:
     dir: /app/storage
 
-# FCM設定(通知機能を有効にする)
-firebase:
-  serviceAccount:
-    file: /keys/firebase-service-account.json
+# # FCM設定(通知機能を有効にする)
+# firebase:
+#   serviceAccount:
+#     file: /keys/firebase-service-account.json
