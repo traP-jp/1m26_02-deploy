@@ -1,6 +1,7 @@
 # 1m26_02-deploy
 
 1Monthon26_02のtraQインスタンスをデプロイするための設定リポジトリ。
+公開ホストは `i-my-traq.trap.show` に統一する。
 
 ## NeoShowcase
 

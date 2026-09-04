@@ -1,7 +1,7 @@
 FROM ghcr.io/trap-jp/1m26_02-bot-mai:master
 
-ENV TRAQ_API_BASE_URL=https://1m26-02-test.trap.show/api/v3
-ENV TRAQ_PUBLIC_ORIGIN=https://1m26-02-test.trap.show
+ENV TRAQ_API_BASE_URL=https://i-my-traq.trap.show/api/v3
+ENV TRAQ_PUBLIC_ORIGIN=https://i-my-traq.trap.show
 ENV TRAQ_BOT_AUTO_REGISTER=true
-ENV TRAQ_BOT_ENDPOINT=https://1m26-02-test.trap.show/bot-mai
+ENV TRAQ_BOT_ENDPOINT=https://i-my-traq.trap.show/bot-mai
 ENV PORT=8080
