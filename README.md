@@ -27,6 +27,7 @@ URL設定:
 | BOT_AI | `/bot-ai` | `8080` | ON | OFF |
 
 BackendでMariaDBを有効にするとNeoShowcaseが設定する `NS_MARIADB_*` 環境変数を、`Dockerfile.backend`がtraQ用の `TRAQ_MARIADB_*` に変換する。
+Backendは非永続ローカルストレージを使う間、起動時に `--repair-images` でUnicode絵文字と全ユーザーのアイコンを再生成する。
 
 BOT_MAIとBOT_AIにはNeoShowcaseで同じ値の環境変数を設定する。
 
