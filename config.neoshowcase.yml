@@ -3,9 +3,5 @@ port: 3000
 allowSignUp: true
 
 # MariaDB settings are supplied by Dockerfile.backend from NeoShowcase's
-# NS_MARIADB_* system environment variables.
-
-storage:
-  type: local
-  local:
-    dir: /app/storage
+# NS_MARIADB_* system environment variables. Storage is configured with
+# TRAQ_STORAGE_* variables in NeoShowcase; without them traQ uses local storage.

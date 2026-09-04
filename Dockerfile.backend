@@ -1,4 +1,4 @@
-FROM ghcr.io/traptitech/traq:latest AS traq
+FROM ghcr.io/trap-jp/1m26_02-server:master AS traq
 
 FROM alpine:3.22
 
