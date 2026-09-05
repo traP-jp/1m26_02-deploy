@@ -1,6 +1,7 @@
 ;(() => {
   const config = {
     enableSearch: false,
+    fallbackChannelPath: 'general',
     isRootChannelSelectableAsParentChannel: true
   }
 
